@@ -2,17 +2,28 @@ import json
 
 
 class DiscoveryMessage:
-    def __init__(self, id=0, ip='127.0.0.1',
-                 manual=True, actuators={}, sensors={}):
-        self.id = id
-        self.ip = ip
-        self.manual = manual
-        self.actuators = actuators
-        self.sensors = sensors
+    def __init__(self, j={}):
+        if j == {}:
+            self.id = 0
+            self.ip = '127.0.0.1'
+            self.manual = True
+            self.actuators = {}
+            self.sensors = {}
+        else:
+            self.id = j['id']
+            self.ip = j['ip']
+            self.manual = j['manual']
+            self.actuators = j['actuators']
+            self.sensors = j['sensors']
 
     def toJSON(self):
         return json.dumps(self, default=lambda o: o.__dict__,
                           sort_keys=True, indent=4)
+
+    def __str__(self):
+        res = "id: {0}\nip: {1}\nmanual: {2}\nactuators: {3}\nsensors: {4}\n".format(
+            self.id, self.ip, self.manual, self.actuators, self.sensors)
+        return res
 
 
 if __name__ == "__main__":
