@@ -1,0 +1,26 @@
+server koji slusa na nekom portu
+Server je izvor gps-a (manje bitan)
+
+clienti KOMBAJN
+	SENZORI   - camera, ultrasonicni senzor, imu senzor, enkoder, 
+	AKTUATORI - motor, servo (command_feedback bude slan nazad svaki put kada se pobudi kretanje automobila.), 
+
+	KOMBAJN MORA DA OBAVESTAVA SERVER (GAZEBO) O SVOME UPRAVLJANJU.
+
+	JSON:
+		poruka {
+			id : int (reg broj)
+			ip : addr
+			manual : T/F
+			aktuatori : { 
+				# definisi sve moguce aktuatore
+				# ako neki kombajn ne poseduje taj aktuator ostavi polje prazno
+				# ali definsano
+			}
+			senzori : { # same }
+			command : {
+				# teme komunikace izmedji klijenta i servera koje nisu nuzno vezane
+				# za aktuatore i senzore direktno.
+			}
+		}
+
