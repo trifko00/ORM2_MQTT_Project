@@ -1,7 +1,7 @@
 
 import socket
 import json
-# from discovery_message import DiscoveryMessage
+from discovery_message import DiscoveryMessage
 
 
 class Server():
@@ -30,9 +30,9 @@ class Server():
             try:
                 bts, addr = self.server_socket.recvfrom(1024)
 
-                command = bts.decode()
-                command = json.loads(command)
-                print(command)
+                msg = bts.decode()
+                discovery_message = DiscoveryMessage(json.loads(msg))
+                print(discovery_message)
             except BaseException:
                 self.server_socket.close()
                 pass

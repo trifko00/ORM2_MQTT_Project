@@ -24,12 +24,8 @@ class Client():
         )
 
     def _streams(self):
-        discovery_message = {}
         while True:
             try:
-                # discovery_message['Type'] = "SENZOR"
-                # discovery_message['ID'] = 5
-                # discovery_message['value'] = 24
                 discovery_message = DiscoveryMessage().toJSON()
                 # print(discovery_message)
                 data = discovery_message.encode()
